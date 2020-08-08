@@ -4,3 +4,7 @@
 
 spider:数据采集，保存为excel
 graph_builder:从保存的excel转换成json,上传到arangodb
+
+图谱结构：
+
+![图谱结构](./graph.png)
