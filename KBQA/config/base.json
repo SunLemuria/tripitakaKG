@@ -1,0 +1,4 @@
+{
+  "entity_file": "../../graph_builder/results/tripitaka_entity.json",
+  "relation_file": "../../graph_builder/results/tripitaka_relation.json"
+}

@@ -8,11 +8,11 @@ import pandas as pd
 
 from lxml import etree
 
-from proxy import proxies
-from user_agents import agents
+from spider.proxy import proxies
+from spider.user_agents import agents
 
 
-class GDEduCrawler:
+class Crawler:
     def __init__(self):
         self.main_url = "http://bskk.net"
         self.read_url = "http://gdedulscg.cn/home/bill/billdetails/billGuid/{}.html"  # 填入see_info的值,阅读页面
@@ -32,14 +32,15 @@ class GDEduCrawler:
         user_agent = random.choice(agents)
 
         # method = random.choice(["http", "https"])
-        method = random.choice(["https"])
-        proxy_url = random.choice(proxies[method])
-        proxy = {method: proxy_url}
-        print(proxy_url)
+        # method = random.choice(["https"])
+        # proxy_url = random.choice(proxies[method])
+        # proxy = {method: proxy_url}
+        # print(proxy_url)
 
         headers = {"User-Agent": user_agent, "Referer": referer} if referer else {"User-Agent": user_agent}
         try:
-            response = requests.get(url, headers=headers, proxies=proxy)
+            response = requests.get(url, headers=headers)
+            # response = requests.get(url, headers=headers, proxies=proxy)
         except Exception as e:
             print(e)
             return ""
@@ -70,7 +71,9 @@ class GDEduCrawler:
         if content:
             html = etree.HTML(content)
         else:
-            html = etree.HTML(html_data)
+            with open(html_data, "r") as f:
+                content = "".join(f.readlines())
+            html = etree.HTML(content)
         divisions = html.xpath('//*/dl')
         for div in divisions:
             division_name = div.xpath('dt/div/text()')  # 部名如“大乘般若部”
@@ -132,5 +135,5 @@ class GDEduCrawler:
 
 if __name__ == '__main__':
     file = "./data/乾隆大藏经-地藏论坛.html"
-    crawler = GDEduCrawler()
+    crawler = Crawler()
     crawler.crawl(html_data='')
