@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title> 搜索框 </title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1309180_m0vigzfu7y.css">
+    <style type="text/css">
+        .bod1
+        {
+            /*background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);*/
+            /*background-image: url(" 2558.jpg");*/
+            /*background-size:cover;*/
+            background: #aa4b6b;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .search-box
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%,-50%);
+            background: #FD2C6B;
+            height: 40px;
+            border-radius: 30px; /*圆角边框*/
+            padding: 10px;
+        }
+        .search-box:hover> .search-text
+        {
+            width: 400px;
+        }
+        .search-box:hover> .search-btn
+        {
+            background: white;
+            color: #26087b;
+        }
+        .search-btn
+        {
+            color: white;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background:#FD2C6B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .search-text
+        {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 20px;
+            font-family: "Microsoft YaHei UI Light";
+            transition: 0.5s;
+            line-height:40px;
+            width:  0px;
+        }
+
+    </style>
+</head>
+<body class="bod1">
+
+<form enctype="multipart/form-data" class="search-box" action="/get_books_table" method="POST">
+    <input class="search-text" id="query" name="query" placeholder="输入经典名称，如:文殊般若经">
+<!--    <input class="search-text" id="query" name="query" placeholder="输入经典名称，如:文殊般若经">-->
+    <input class="search-btn" type="submit" value="搜索">
+<!--    <i class="iconfont iconchazhao"></i>-->
+</form>
+</body>
+</html>

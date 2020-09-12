@@ -56,6 +56,4 @@ graph_builder:从保存的excel转换成json,上传到arangodb
 
 运行 KBQA/server/server.py
 
-返回json，目前支持按
-
-如![image-20200912220401790](/home/rai/.config/Typora/typora-user-images/image-20200912220401790.png)
+返回json

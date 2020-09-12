@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        .table_style{
+            width: 400px;
+            height: 200px;
+            border-collapse: collapse;
+            margin: 0px auto;
+            border: 1px solid black;
+        }
+        .table_style th{
+            border: 1px solid black;
+            background: blue;
+            color: white;
+        }
+        .table_style td{
+            border: 1px solid black;
+<!--            text-align: center;-->
+        }
+
+    </style>
+</head>
+<body>
+<table class="table_style">
+    {% for line in result %}
+    <tr>
+        {%for cell in line%}
+        <td>{{ cell | safe}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
