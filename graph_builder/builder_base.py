@@ -30,6 +30,7 @@ class Base:
             return self.known_entities[kwargs["name"]]
         kwargs.pop("check_exist", None)
         entity = self.json_template("entity")
+        entity["attribute"] = {}
         for k in kwargs:
             entity[k] = kwargs.get(k)
         entity["_key"] = "{}".format(self.start_id + self.entity_count)
