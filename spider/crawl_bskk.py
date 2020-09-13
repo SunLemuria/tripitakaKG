@@ -111,13 +111,21 @@ class Crawler:
                 else:
                     save_info["分卷"] = i + 1
                 save_info["经名"] = book_name[0].strip()
-                save_info["地址"] = self.main_url + link[0].strip()
+                # save_info["地址"] = self.main_url + link[0].strip()
+                save_info["地址"] = link[0].strip()
+                # print(save_info["地址"])
                 self.save_information(**save_info)
         else:
             book_name = book.xpath('div[@class="left pull-left"]/a/text()')
             link = book.xpath('div[@class="left pull-left"]/a/@href')
             save_info["经名"] = book_name[0].strip()
-            save_info["地址"] = self.main_url + link[0].strip()
+            save_info["地址"] = link[0].strip()
+            # save_info["地址"] = self.main_url + link[0].strip()
+            # print(save_info["地址"])
+            # 网页数据问题
+            # if save_info["地址"] in ['http://bskk.net/Index/detail/id/662.html',
+            #                        'http://bskk.net/Index/detail/id/663.html']:
+            #     save_info["经名"] = "佛顶尊胜陀罗尼经"
             self.save_information(**save_info)
 
     def save_information(self, **kwargs):
@@ -125,7 +133,7 @@ class Crawler:
         保存到xls
         :return:
         """
-        print(kwargs)
+        # print(kwargs)
         # if not kwargs.get("经名"):
         #     print(kwargs)
         self.lock.acquire()
@@ -136,4 +144,4 @@ class Crawler:
 if __name__ == '__main__':
     file = "./data/乾隆大藏经-地藏论坛.html"
     crawler = Crawler()
-    crawler.crawl(html_data='')
+    crawler.crawl(html_data=file)

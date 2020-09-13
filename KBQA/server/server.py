@@ -45,15 +45,29 @@ def get_books_table():
     else:
         kbqa.run(request=user_data)
         response = kbqa.response
-        result = [["经名", "译者"]]
-        # 变成二维列表
-        for info in response:
-            url = '<a href="{}" target="_blank">{}</a>'.format(
-                info.get("地址", ""), info.get("经名", ""))
-            result.append(
-                [url, info.get("译者", "")]
-            )
-    return render_template('detail.html', result=result, title=user_data.get("query") or "result")
+        results = []
+        # 没有url时指定为form表单
+        no_url = """
+        <form id="form_{id}" method="post" action="/get_books_table">
+          <input type="hidden" name="query" value="{book_name}" /> 
+          <U><a color="blue" onclick="document.getElementById('form_{id}').submit();">{book_name}</a></U>
+        </form>
+        """
+        i = 0
+        for book_similar in response:
+            result = [["经名", "译者"]]
+            for info in book_similar:
+                if info.get("地址"):
+                    url = '<a href="{}" target="_blank">{}</a>'.format(
+                        info.get("地址", ""), info.get("经名", ""))
+                else:
+                    url = no_url.format(id=i, book_name=info.get("经名", ""))
+                result.append(
+                    [url, info.get("译者", "")]
+                )
+                i += 1
+            results.append(result)
+    return render_template('detail.html', results=results, title=user_data.get("query") or "result")
 
 
 if __name__ == '__main__':
