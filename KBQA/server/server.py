@@ -2,7 +2,7 @@
 import os
 import sys
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 
 PWD = os.path.dirname(os.path.abspath(__file__))
 BASE = os.path.dirname(os.path.dirname(PWD))
@@ -20,11 +20,16 @@ def search_books():
     return render_template('search.html')
 
 
+@app.route('/search_books/m', methods=['GET'])
+def search_books_mobile():
+    return render_template('mobile.html')
+
+
 @app.route('/get_books', methods=['POST'])
 def get_books():
     user_data = request.json
     if not user_data.get("query"):
-        response = {"info": "请指定query"}
+        return redirect(url_for("search_books"))
     else:
         kbqa.run(request=user_data)
         response = kbqa.response
@@ -36,7 +41,7 @@ def get_books():
 def get_books_table():
     user_data = request.form
     if not user_data.get("query"):
-        result = []
+        return redirect(url_for("search_books"))
     else:
         kbqa.run(request=user_data)
         response = kbqa.response

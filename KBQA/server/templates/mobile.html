@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title> 大藏经搜索 </title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1309180_m0vigzfu7y.css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+        .bod1
+        {
+            /*background: -webkit-linear-gradient(to right, #f7797d, #FBD786, #C6FFDD);*/
+            /*background-image: url(" 2558.jpg");*/
+            /*background-size:cover;*/
+            background: #aa4b6b;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        .search-box
+        {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%,-50%);
+            background: #FD2C6B;
+            height: 40px;
+            width: 300px;
+            border-radius: 30px; /*圆角边框*/
+            padding: 10px;
+        }
+        .search-btn
+        {
+            color: white;
+            float: right;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background:#FD2C6B;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.5s;
+        }
+        .search-text
+        {
+            border: none;
+            background: none;
+            outline: none;
+            float: left;
+            padding: 0;
+            color: white;
+            font-size: 20px;
+            font-family: "Microsoft YaHei UI Light";
+            transition: 0.5s;
+            line-height:40px;
+            width:  0px;
+        }
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background: #494A5F;-->
+<!--            font-weight: 500;-->
+<!--            font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;-->
+<!--        }-->
+        div.search {padding: 30px 0;}
+
+        form {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        input, button {
+            border: none;
+            outline: none;
+        }
+
+        input {
+            width: 100%;
+            height: 42px;
+            padding-left: 13px;
+            padding-right:46px;
+        }
+
+        button {
+            height: 42px;
+            width: 42px;
+            cursor: pointer;
+            position: absolute;
+        }
+        /*搜索框7*/
+        .bar7 {background: #7BA7AB;}
+        .bar7 form {
+            height: 42px;
+        }
+        .bar7 input {
+            width: 250px;
+            border-radius: 42px;
+            border: 2px solid #324B4E;
+            background: #F9F0DA;
+            transition: .3s linear;
+            float: right;
+        }
+<!--        .bar7 input:focus {-->
+<!--            width: 300px;-->
+<!--        }-->
+        .bar7 button {
+            background: none;
+            top: -2px;
+            right: 0;
+        }
+        .bar7 button:before{
+            content: "\f002";
+            font-family: FontAwesome;
+            color: #324b4e;
+        }
+
+
+    </style>
+
+</head>
+<body class="bod1">
+    <div class="search bar7">
+        <form enctype="multipart/form-data" action="/get_books_table" method="POST" target="_blank">
+            <input type="text" name="query" placeholder="输入大藏经经典名称，如:文殊般若经">
+            <button type="submit"></button>
+        </form>
+    </div>
+</body>
+</html>
