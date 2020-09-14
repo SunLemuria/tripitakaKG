@@ -62,9 +62,8 @@
             width:  0px;
         }
 
-
-
     </style>
+
     <script type="text/javascript">
     //判断访问终端
     var browser={
@@ -88,22 +87,15 @@
         language:(navigator.browserLanguage || navigator.language).toLowerCase()
     }
     //使用方法：
-    //判断是否IE内核
-<!--    if(browser.versions.trident){ alert("is IE"); }-->
-<!--    //判断是否webKit内核-->
-    if(browser.versions.webKit){
-<!--    window.location.href = "search_books/m";-->
-    }
     //判断是否移动端
     if(browser.versions.mobile||browser.versions.android||browser.versions.ios){
-        window.location.href = "search_books/m";
+        window.location.href = "search_books_m";
     }
 
     </script>
 </head>
 <body class="bod1">
 
-<!--<form enctype="multipart/form-data" action="/get_books_table" method="POST" target="_blank">-->
 <form enctype="multipart/form-data" class="search-box" action="/get_books_table" method="POST" target="_blank">
     <input class="search-text" id="query" name="query" placeholder="输入大藏经经典名称，如:文殊般若经">
     <input class="search-btn" type="submit" value="搜索">

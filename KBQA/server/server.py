@@ -20,7 +20,7 @@ def search_books():
     return render_template('search.html')
 
 
-@app.route('/search_books/m', methods=['GET'])
+@app.route('/search_books_m', methods=['GET'])
 def search_books_mobile():
     return render_template('mobile.html')
 
